@@ -54,10 +54,8 @@ MAIN() {
   elif [[ $TRY < $BEST ]] 
   then
     BEST=$TRY
-    echo 'BEST TRY!' $PLAYED $BEST $USER
     UPDATE_DB=$($PSQL "UPDATE users SET played=$PLAYED , best=$BEST WHERE username='$USER'")
   else
-    echo 'NOT BAD!' $PLAYED $BEST $USER
     UPDATE_DB=$($PSQL "UPDATE users SET played = $PLAYED WHERE username='$USER'")
   fi
   
